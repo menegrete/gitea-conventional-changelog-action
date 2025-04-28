@@ -9,6 +9,8 @@ describe('index.ts', () => {
   test('The action is executed without an error', async () => {
     process.env['INPUT_FROM'] = '';
     process.env['INPUT_TO'] = 'HEAD';
+    process.env['INPUT_REPOURL'] =
+      'http://git.n.local/NSoft/gitea-conventional-changelog-action';
 
     const ip = path.join(__dirname, 'index.ts');
     const { stdout, stderr } = await exec(`ts-node ${ip}`, {

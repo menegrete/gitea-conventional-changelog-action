@@ -34,35 +34,15 @@ export const getCommits: Git = async ({ from, to }) => {
   return parsed.filter((commit): commit is Commit => commit !== null);
 };
 
-export const getRepositoryUrl = async (): Promise<string | null> => {
-  const {
-    values: {
-      '.git/config': { 'remote.origin.url': remotes },
-    },
-  } = await git.listConfig();
-
-  const remote = Array.isArray(remotes) ? remotes[0] : remotes;
-  const sshRegex = /git@github\.com:(.+)\.git/;
-  const httpRegex = /https:\/\/github\.com\/(.+)/;
-  const replace = 'https://github.com/$1';
-
-  for (const testRegx of [sshRegex, httpRegex]) {
-    if (testRegx.test(remote)) {
-      return remote.replace(sshRegex, replace);
-    }
-  }
-
-  return null;
-};
-
-export const getIssuesPath = async (): Promise<string> => {
-  const repositoryUrl = await getRepositoryUrl();
-
-  if (!repositoryUrl) {
+type IssuesURL = (params: { repoUrl: string }) => Promise<string>;
+export const getIssuesPath: IssuesURL = async ({
+  repoUrl,
+}): Promise<string> => {
+  if (!repoUrl) {
     throw new Error(
       'Repository url can not be determined from local git config'
     );
   }
 
-  return `${repositoryUrl}/issues/`;
+  return `${repoUrl}/issues/`;
 };

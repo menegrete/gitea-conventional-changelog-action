@@ -6,6 +6,7 @@ const run = async () => {
   try {
     const from = getInput('from');
     const to = getInput('to');
+    const repoUrl = getInput('repoUrl');
     const configFile =
       getInput('config-file') || path.join(__dirname, 'defaultConfig.json');
 
@@ -13,6 +14,7 @@ const run = async () => {
       from,
       to,
       configFile,
+      repoUrl,
     });
 
     setOutput('body', body);

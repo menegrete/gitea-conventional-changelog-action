@@ -2,7 +2,7 @@
   "typeLabels": [
     {
       "title": "⚡️ Breaking Changes",
-      "types": ["breaking"]
+      "types": ["breaking", "feat!"]
     },
     {
       "title": "🚀 New Features",
@@ -20,7 +20,7 @@
   "bumpLabels": [
     {
       "title": "major",
-      "types": ["breaking"]
+      "types": ["breaking", "feat!"]
     },
     {
       "title": "minor",

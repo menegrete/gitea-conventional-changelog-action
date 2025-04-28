@@ -59,7 +59,8 @@ describe('changelog.ts', () => {
                   expect(
                     generateChangelog({
                       commits: content() as Commit[],
-                      issuesUrl: 'https://github.com/some/repository/issues/',
+                      issuesUrl:
+                        'http://git.n.local/NSoft/gitea-conventional-changelog-action/issues/',
                       typeLabels: typeContent() as GroupLabel[],
                       bumpLabels: bumpContent() as GroupLabel[],
                       sortOrder: sortOrder as SortOrder,

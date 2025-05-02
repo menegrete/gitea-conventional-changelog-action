@@ -13,8 +13,8 @@
       "types": ["fix"]
     },
     {
-      "title": "🧹 Chore",
-      "types": ["chore"]
+      "title": "🧹 Other changes",
+      "types": ["docs", "test", "ci", "refactor", "perf", "chore", "revert"]
     }
   ],
   "bumpLabels": [
